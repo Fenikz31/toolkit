@@ -1,0 +1,18 @@
+{
+  "name": "@fenikz/toolkit",
+  "author": "Patrick Kaninda fenikz@fenikz.tk",
+  "publishConfig": {
+    "@fenikz:registry": "https://gitlab.fenikz.tk/api/v4/projects/3/packages/npm/"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.fenikz.tk:Fenikz/toolkit.git"
+  },
+  "license": "ISC",
+  "description": ""
+}
