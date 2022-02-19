@@ -7,12 +7,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --enable-source-maps"
   },
   "repository": {
     "type": "git",
     "url": "git@gitlab.fenikz.tk:Fenikz/toolkit.git"
   },
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.1"
+  }
 }
