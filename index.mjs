@@ -1,14 +1,36 @@
 const toolkit = {
-  
-flattenObj ( obj, prefix = '' ) {
-  return Object.keys(obj).map( (row) => row).reduce( (acc, curr) => {
-    const pref = prefix.length ? prefix + '_' : ''
-    if ( typeof obj[curr] !== 'object' || obj[curr] === null) {
-      return  {...acc, ...{ [pref + curr]: obj[curr] }}
-    }
-    const depth = flatten(obj[curr], pref + curr)
-    return { ...acc, ...depth }
-  }, {})
+ /**
+ * flatten any object in array.
+ * @param { Array } array Argument to check.
+ */
+flattenObj ( array, separator = '' ) {
+  if ( array )
+    return Object.keys( array ).map(( key ) => key ).reduce(( acc, curr, index ) => {
+      console.log( 'type of curr => ', typeof curr, curr, Array.isArray( array[curr]), typeof array[curr], array[curr] )
+      const pref = separator.length ? separator + '_' : separator
+      if ( Array.isArray( array[ curr ])) {
+        // console.log( 'curr => ', curr )
+        // console.log( 'Array.isArray( array[ curr ]) =>', array[ curr ] )
+        console.log( 'test ', array[ curr ].reduce(( a, c ) => ({ ...a, ...{[ pref + c ]: array[ curr ][ c ] } })))
+        const depth = this.flattenObj( array[ curr ],  curr  )
+        
+      console.log( 'depth => ', depth )
+      return { ...acc, ...depth }
+
+      }
+      if ( !Array.isArray( array[ curr ]) || typeof array[ curr ] !== 'object' || array[ curr ] === null) {
+        // console.log( 'curr => ', curr )
+        // console.log( 'pref => ', pref )
+        return { ...acc, ...{[ pref + curr ]: array[ curr ] }}
+      }
+      // console.log( 'array[ curr ] => ', array[ curr ] )
+      
+      const depth = this.flattenObj( array[ curr ], [ curr ] )
+      // console.log( 'depth => ', depth )
+      return { ...acc, ...depth }
+    }, {})
+
+  return null
 },
 
  /**
@@ -168,30 +190,27 @@ isOfType: {
  removeDuplicate: ( array ) => ([ ...new Set( array )])
 }
 
-// const primitives = {
-//   Array,
-//   Map,
-//   Set,
-//   Date,
-//   Object,
-//   String,
-//   Number,
-//   Boolean,
-//   null: null,
-//   undefined: undefined
-// }
-
-
-
-// Object.keys( toolkit.isOfType ).forEach(( key ) => {
-//   if ( key !== 'type' && key !== 'nil' )
-//     return Object.keys( primitives ).forEach(( primitive ) => {
-//       console.log( key, primitive, key === primitive.toLowerCase() )
-//       if ( typeof primitives[ primitive ] !== 'function' )
-//         return console.log( toolkit.isOfType[ key ]( primitives[ primitive ]))
-
-//       return console.log( toolkit.isOfType[ key ]( new primitives[ primitive ]()))
-//     })
-// })
+// console.log( toolkit.flattenObj())
+// console.log( toolkit.flattenObj([]))
+// console.log( toolkit.flattenObj([{}]))
+// console.log( toolkit.flattenObj([1]))
+// console.log( toolkit.flattenObj([1,2]))
+// console.log( toolkit.flattenObj([1,2,{}]))
+// console.log( toolkit.flattenObj([1,2,{ key: 'value'}]))
+console.log( toolkit.flattenObj([
+  {
+    user: {
+      id: Math.floor(Math.random() * 100),
+      username: 'username',
+      articles: [
+        {
+        id: 'depth 2 value',
+        title: 'depth 2_1 value',
+        author: ['depth 2_2 value','depth 2_2 value']
+        }
+      ]
+    }
+  }
+]))
 
 export default toolkit
