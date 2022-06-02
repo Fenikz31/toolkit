@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-module.exports = {
+export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -34,12 +34,13 @@ module.exports = {
   coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
+  coverageReporters: [
+    "clover",
+    "html",
+    "json",
+    "text",
+    "lcov",
+  ],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -179,7 +180,12 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.m?js$": "babel-jest"
+    // "^.+\\.m?js$": "babel-jest"
+    // "^.+\\.m?js$": "babel-jest"
+    // supportsDynamicImport: true,
+    // supportsExportNamespaceFrom: true,
+    // supportsStaticESM: true,
+    // supportsTopLevelAwait: true
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
@@ -192,11 +198,11 @@ module.exports = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  // verbose: undefined,
+  verbose: true,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],
 
   // Whether to use watchman for file crawling
-  // watchman: true,
+  watchman: true,
 };

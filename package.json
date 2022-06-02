@@ -1,22 +1,23 @@
 {
-  "name": "@fenikz/toolkit",
-  "author": "Patrick Kaninda fenikz@fenikz.tk",
+  "name": "toolkitjs",
+  "author": "Patrick Kaninda fenikz31@gmail.com",
   "publishConfig": {
-    "@fenikz:registry": "https://nexus.fenikz.eu/repository/npm-proxy"
+    "registry": "https://nexus.fenikz.eu/repository/npm-hosted/"
   },
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
+    "dev": "nodemon index.js",
+    "test": "node --experimental-vm-modules ./node_modules/jest-cli/bin/jest.js --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.fenikz.tk:Fenikz/toolkit.git"
+    "url": "git@github.com:Fenikz31/toolkit.git"
   },
   "license": "ISC",
-  "description": "",
+  "description": "Javascript toolkit",
+  "type": "module",
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
     "jest": "^27.5.1"
   }
 }
