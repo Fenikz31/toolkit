@@ -8,7 +8,24 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "node --experimental-vm-modules ./node_modules/jest-cli/bin/jest.js --watch"
+    "test": "node --experimental-vm-modules ./node_modules/jest-cli/bin/jest.js --watch",
+    "test:run": "npx jest --no-coverage",
+    "test:all": "npx jest --no-coverage --verbose",
+    "test:full": "npx jest --no-coverage --verbose --testPathPattern='test/.*\\.spec\\.js$'",
+    "test:coverage": "npx jest --config jest.coverage.config.js",
+    "test:performance": "npx jest --config jest.performance.config.js",
+    "test:security": "npx jest --config jest.security.config.js",
+    "test:compatibility": "npx jest --config jest.compatibility.config.js",
+    "test:regression": "npx jest --config jest.regression.config.js",
+    "test:integration": "npx jest --config jest.integration.config.js",
+    "test:load": "npx jest --config jest.load.config.js",
+    "lint": "eslint index.js test/",
+    "lint:fix": "eslint index.js test/ --fix",
+    "format": "prettier --write index.js test/",
+    "format:check": "prettier --check index.js test/",
+    "quality": "npm run lint && npm run test:run",
+    "build": "npm run quality && npm run format",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -18,6 +35,12 @@
   "description": "Javascript toolkit",
   "type": "module",
   "devDependencies": {
-    "jest": "^27.5.1"
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3",
+    "babel-jest": "^30.1.2",
+    "eslint": "^8.57.1",
+    "husky": "^9.1.7",
+    "jest": "^27.5.1",
+    "prettier": "^3.6.2"
   }
 }
