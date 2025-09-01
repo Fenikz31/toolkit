@@ -1,39 +1,5 @@
 const toolkit = {
   /**
-   * flatten any object in array.
-   * @param { Array } array Argument to check.
-   */
-  // flattenObj ( array, separator = '' ) {
-  //   if ( array )
-  //     return Object.keys( array ).map(( key ) => key ).reduce(( acc, curr, index ) => {
-  //       console.log( 'type of curr => ', typeof curr, curr, Array.isArray( array[curr]), typeof array[curr], array[curr] )
-  //       const pref = separator.length ? separator + '_' : separator
-  //       if ( Array.isArray( array[ curr ])) {
-  //         // console.log( 'curr => ', curr )
-  //         // console.log( 'Array.isArray( array[ curr ]) =>', array[ curr ] )
-  //         console.log( 'test ', array[ curr ].reduce(( a, c ) => ({ ...a, ...{[ pref + c ]: array[ curr ][ c ] } })))
-  //         const depth = this.flattenObj( array[ curr ],  curr  )
-          
-  //       console.log( 'depth => ', depth )
-  //       return { ...acc, ...depth }
-
-  //       }
-  //       if ( !Array.isArray( array[ curr ]) || typeof array[ curr ] !== 'object' || array[ curr ] === null) {
-  //         // console.log( 'curr => ', curr )
-  //         // console.log( 'pref => ', pref )
-  //         return { ...acc, ...{[ pref + curr ]: array[ curr ] }}
-  //       }
-  //       // console.log( 'array[ curr ] => ', array[ curr ] )
-        
-  //       const depth = this.flattenObj( array[ curr ], [ curr ] )
-  //       // console.log( 'depth => ', depth )
-  //       return { ...acc, ...depth }
-  //     }, {})
-
-  //   return null
-  // },
-
-  /**
    * Check if an argument is empty.
    * @param { * } arg Argument to check.
    */
@@ -54,7 +20,7 @@ const toolkit = {
     if (({}).toString.call( arg ) === '[object Object]')
       return Object.keys( arg ).length === 0
 
-    // return false
+    return false
   },
 
   isOfType: {
@@ -205,28 +171,5 @@ const toolkit = {
     return ([ ...new Set( array )])
   }
 }
-
-// console.log( toolkit.flattenObj())
-// console.log( toolkit.flattenObj([]))
-// console.log( toolkit.flattenObj([{}]))
-// console.log( toolkit.flattenObj([1]))
-// console.log( toolkit.flattenObj([1,2]))
-// console.log( toolkit.flattenObj([1,2,{}]))
-// console.log( toolkit.flattenObj([1,2,{ key: 'value'}]))
-// console.log( toolkit.flattenObj([
-//   {
-//     user: {
-//       id: Math.floor(Math.random() * 100),
-//       username: 'username',
-//       articles: [
-//         {
-//         id: 'depth 2 value',
-//         title: 'depth 2_1 value',
-//         author: ['depth 2_2 value','depth 2_2 value']
-//         }
-//       ]
-//     }
-//   }
-// ]))
 
 export default toolkit
